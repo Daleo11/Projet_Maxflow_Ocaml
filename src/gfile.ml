@@ -111,4 +111,20 @@ let from_file path =
   
   close_in infile ;
   final_graph
+
+  (*exporte le graph au format dot*) 
+  let export_dot gr source sink chemin=
+   let ff = open_out chemin in
+   fprintf ff "digraph finite_state_machine {\n";
+   fprintf ff "\tfontname=\"Helvetica,Arial,sans-serif\"\n";
+   fprintf ff "\tnode [fontname=\"Helvetica,Arial,sans-serif\"]\n";
+   fprintf ff "\tedge [fontname=\"Helvetica,Arial,sans-serif\"]\n";
+   fprintf ff "\trankdir=LR;\n";
+   fprintf ff "\tnode [shape = doublecircle]; %d %d;\n" source sink;
+   fprintf ff "\tnode [shape = circle];\n";
+
+   e_iter gr (fun arc -> fprintf ff "\t%d -> %d [label = \"%s\"];\n" arc.src arc.tgt arc.lbl );
+
+   fprintf ff "}\n";
+   close_out ff;;
   

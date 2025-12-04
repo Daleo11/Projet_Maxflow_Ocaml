@@ -27,3 +27,14 @@ clean:
 	find -L . -name "*~" -delete
 	rm -f *.exe
 	dune clean
+
+arbre:
+	
+	@dot -Tsvg infile > entree.svg
+
+run: build
+	@echo "\n   ⚡  EXECUTING  ⚡\n"
+	./ftest.exe graphs/${graph} $(src) $(dst) outfile
+	@echo "\n   🥁  RESULT (content of outfile)  🥁\n"
+	@cat outfile
+	@dot -Tsvg outfile > sortie.svg

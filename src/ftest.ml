@@ -1,4 +1,7 @@
 open Gfile
+open Algo
+(*open Graph*)
+open Tools
     
 let () =
 
@@ -29,7 +32,8 @@ let () =
   let graph = from_file infile in
 
   (* Rewrite the graph that has been read. *)
-  let () = write_file outfile graph in
+  let () = write_file infile graph in
 
+  export_dot (gmap (init_graph_ecart (gmap graph int_of_string)) string_of_int) _source _sink outfile;
   ()
 
