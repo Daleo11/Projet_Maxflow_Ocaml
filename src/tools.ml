@@ -22,4 +22,12 @@ match v with
 |[]->Printf.printf "\n"
 ;;
 
+let count_nodes g = (*renvois le nombre de node dans le graph g*)
+  let counter = ref 0 in
+  n_iter g (fun _node_id -> 
+    counter := !counter + 1
+  );
+  !counter
+
+
 

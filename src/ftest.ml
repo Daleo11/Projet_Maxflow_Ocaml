@@ -32,8 +32,11 @@ let () =
   let graph = from_file infile in
 
   (* Rewrite the graph that has been read. *)
-  let () = write_file infile graph in
+  (*let () = write_file infile graph in*)
 
-  export_dot (gmap (init_graph_ecart (gmap graph int_of_string)) string_of_int) _source _sink outfile;
-  ()
-
+  (*export_dot (gmap (init_graph_ecart (gmap graph int_of_string)) string_of_int) _source _sink outfile;*)
+  let gr_final = floyd_fulkerson (gmap graph int_of_string) _source _sink in
+  (*let gr_final = init_graph_ecart (gmap graph int_of_string) in *)
+  Printf.printf"flot max -> %d \n" (flot_max gr_final _source);
+  export_dot (gmap gr_final string_of_int) _source _sink outfile;;
+  (*();;*)

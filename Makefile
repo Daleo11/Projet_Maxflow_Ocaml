@@ -2,7 +2,7 @@
 
 src?=0
 dst?=5
-graph?=graph1.txt
+graph?=graph5.txt
 
 all: build
 
@@ -38,3 +38,14 @@ run: build
 	@echo "\n   🥁  RESULT (content of outfile)  🥁\n"
 	@cat outfile
 	@dot -Tsvg outfile > sortie.svg
+
+
+test:
+	@for g in 1 3 5; do \
+		echo "\n   ⚡  TESTING GRAPH $$g ⚡\n"; \
+		GRAPH="graph$$g.txt"; \
+		./ftest.exe graphs/$$GRAPH $(src) $(dst) outfile; \
+		echo "\n   🥁  RESULT (content of outfile)  🥁\n"; \
+		cat outfile; \
+		echo "\n---------------------------\n"; \
+	done
