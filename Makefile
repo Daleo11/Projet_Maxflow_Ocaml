@@ -2,7 +2,7 @@
 
 src?=0
 dst?=5
-graph?=graph5.txt
+graph?=graph7.txt
 
 all: build
 
@@ -40,8 +40,8 @@ run: build
 	@dot -Tsvg outfile > sortie.svg
 
 
-test:
-	@for g in 1 3 5; do \
+test: build
+	@for g in 1 5 7; do \
 		echo "\n   ⚡  TESTING GRAPH $$g ⚡\n"; \
 		GRAPH="graph$$g.txt"; \
 		./ftest.exe graphs/$$GRAPH $(src) $(dst) outfile; \

@@ -27,5 +27,6 @@ Utilisation :
 
 make clean (pour nettoyer les fichies non voulus)
 make run (lance le code sur un graph predefini en debut du makefile)
+            genere un fichier.svg pour visualiser le graph final
 
 make test (lance le code sur plusieurs graphs, definis dans une boucle dans le test)
